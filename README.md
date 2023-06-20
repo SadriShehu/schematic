@@ -34,3 +34,6 @@ func main() {
 }
 ```
 By default the schemas will be generate to `/tmp/schemas/` but this can be redefined as needed when the go program is executed by using the `-path` parameter.
+
+# Contributors
+[@endrit101](https://github.com/endrit101) - Endrit Toplica
