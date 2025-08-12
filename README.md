@@ -4,15 +4,12 @@ This tool generates JSON schemas from Go structs which can be used as event defi
 ## Usage
 Create a new directory and in a main.go file add/define your events like follows and use the below `func main()` snippet
 ```
-var genSchema map[string]generator.Schema{
-    "event.name": {
-			Schemas:    "http://json-schema.org/draft-07/schema#",
-			Title:      "Your event name",
-			Type:       "object",
-			Required:   generator.GenerateRequired(YourEventStruct{}, nil),
-			Properties: generator.GenerateProperties(YourEventStruct{}),
-    },
-    ...
+var genSchema map[string]schematic.Schema = map[string]schematic.Schema{
+	"event.name": schematic.GenerateSchema(
+		YourEventStruct{},
+		"Cute Event Name",
+		"http://json-schema.org/draft-07/schema#",
+	),
 }
 
 func main() {
