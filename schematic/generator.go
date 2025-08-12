@@ -289,7 +289,7 @@ func (ctx *schemaContext) shouldUseDefinition(fieldType reflect.Type, nested map
 func (ctx *schemaContext) createDefinitionReference(info fieldInfo, nested map[string]PropertyDefinition, required []string) PropertyDefinition {
 	defName := info.Field.Type.Name()
 	if defName == "" {
-		defName = "AnonymousStruct" + string(rune(ctx.counter))
+		defName = "AnonymousStruct" + strconv.Itoa(ctx.counter)
 		ctx.counter++
 	}
 
