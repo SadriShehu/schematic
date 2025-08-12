@@ -32,13 +32,11 @@ type YourEventStruct struct {
 }
 
 var genSchema map[string]schematic.Schema = map[string]schematic.Schema{
-	"event.name": {
-		Schemas:    "http://json-schema.org/draft-07/schema#",
-		Title:      "Cute Event Name",
-		Type:       "object",
-		Required:   schematic.GenerateRequired(YourEventStruct{}, nil),
-		Properties: schematic.GenerateProperties(YourEventStruct{}),
-	},
+	"event.name": schematic.GenerateSchema(
+		YourEventStruct{},
+		"Cute Event Name",
+		"http://json-schema.org/draft-07/schema#",
+	),
 }
 
 func main() {
