@@ -2,6 +2,7 @@ package schematic
 
 import (
 	"reflect"
+	"strconv"
 	"strings"
 	"unicode"
 )
@@ -412,12 +413,11 @@ func GenerateRequired(object interface{}, nestedObject reflect.Type) []string {
 			}
 			omitempty := strings.Join(args[1:], ",")
 
-			// Field is required if it doesn't have omitempty tag
 			if !strings.Contains(omitempty, "omitempty") {
 				require = append(require, tagName)
 			}
 		} else {
-			// Handle special case for tags field
+			// handle special case for tags field
 			args := strings.Split(tag, ",")
 			tagName := args[0]
 			if tagName == "tags" {
